@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Shopping List</title>
+    <!-- Favicon -->
+    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+    />
+    <!-- Main css file -->
+    <link rel="stylesheet" href="css/index.min.css" />
+    <!-- Custom styles -->
+    <style></style>
+  </head>
+
+  <body>
+    <!-- Start your project here-->
+    <main class="app">
+      <h1 class="app__heading">Shopping List</h1>
+      <div class="app__display">
+        <div class="app__item">
+          <span class="app__item__description">ogórki</span>
+          <span class="app__item__count">4</span>
+          <button class="app__item__button app__item__button--delete">
+            <img class="app__item__icon" src="img/menu.svg" alt="" />del
+          </button>
+          <button class="app__item__button app__item__button--edit">
+            <img class="app__item__icon" src="img/delete.svg" alt="" />edit
+          </button>
+        </div>
+      </div>
+      <div class="app__inputs">
+        <input class="app__inputs-input app__inputs-input--text" type="text" />
+        <input class="app__inputs-input app__inputs-input--number" type="number" />
+
+        <input
+          class="app__inputs-input app__inputs-input--radio"
+          type="radio"
+          name="units"
+          id="pieces"
+        />
+        <label for="pieces">szt</label>
+        <input
+          class="app__inputs-input app__inputs-input--radio"
+          type="radio"
+          name="units"
+          id="g"
+        />
+        <label for="g">g</label>
+        <input
+          class="app__inputs-input app__inputs-input--radio"
+          type="radio"
+          name="units"
+          id="kg"
+        />
+        <label for="kg">kg</label>
+        <select class="app__select" name="" id="">
+          <option class="app__select-option app__select-option--warzywa" value="warzywa"
+            >warzywa</option
+          >
+          <option class="app__select-option app__select-option--owoce" value="owoce">owoce</option>
+          <option class="app__select-option app__select-option--nabiał" value="nabiał"
+            >nabiał</option
+          >
+          <option class="app__select-option app__select-option--pieczywo" value="pieczywo"
+            >pieczywo</option
+          >
+          <option
+            class="app__select-option app__select-option--art higieniczne"
+            value="art-higieniczne"
+            >art higieniczne</option
+          >
+          <option class="app__select-option app__select-option--woda" value="woda">woda</option>
+          <option class="app__select-option app__select-option--inne napoje" value="inne-napoje"
+            >inne napoje</option
+          >
+        </select>
+        <button class="app__add-button" type="button">Add</button>
+      </div>
+    </main>
+    <!-- End your project here-->
+  </body>
+  <!-- Main js file -->
+  <script type="text/javascript" src="js/index.min.js"></script>
+  <!-- Custom scripts -->
+  <script type="text/javascript"></script>
+</html>

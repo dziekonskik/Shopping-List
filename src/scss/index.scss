@@ -1,0 +1,68 @@
+@import '~mdb-ui-kit/css/mdb.min.css';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  justify-content: center;
+}
+
+.app {
+  display: grid;
+  height: 100vh;
+  align-items: space-between;
+
+  &__heading {
+    height: 5vh;
+    font-size: 24px;
+    margin: auto auto;
+  }
+
+  &__display {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(auto-fit, 100px);
+    gap: 10px;
+    height: 70vh;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 30px;
+  }
+
+  &__item {
+    padding: 10px;
+    border: 1px solid grey;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__inputs {
+    height: 10vh;
+    border: 1px solid black;
+    border-radius: 10px;
+    align-self: end;
+    padding: 10px;
+
+    &-input {
+      border: 1px solid black;
+      border-radius: 3px;
+      padding: 3px;
+
+      &--number {
+        width: 60px;
+      }
+    }
+  }
+
+  &__add-button {
+    width: 60px;
+    background-color: transparent;
+    border: 1px solid black;
+    border-radius: 3px;
+  }
+}
