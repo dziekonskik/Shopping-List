@@ -11,29 +11,17 @@ const inputList = document.querySelectorAll('.app__inputs-input');
 const categories = document.querySelector('.app__select');
 const categoryList = Array.from(document.querySelectorAll('.app__select__option'));
 
-const totalItemCount = () => {
-  let itemsTotal = 0;
-  return itemsTotal++;
-};
-
 inputList.forEach((input) => input.addEventListener('change', handleInputChange));
 
 categories.addEventListener('change', handleSelectChange);
 
-const itemData = {
-  product: getProductName,
-  quantity: 0,
-  units: '',
-  category: '',
-};
-
-function getProductName(textInput) {
-  const description = document.querySelector('.app__inputs-input--text');
-}
-
 function setSesstionStorage(key, value) {
   sessionStorage.removeItem(key);
   sessionStorage.setItem(key, value);
+}
+
+function sessionStorageValue(key) {
+  return sessionStorage.getItem(key);
 }
 
 function handleInputChange(e) {
@@ -47,7 +35,14 @@ function handleInputChange(e) {
   }
   if (e.target === itemInputs.quantity) {
     if (e.target.value < 0) e.target.value = 0;
+    setSesstionStorage('quantityInput', e.target.value);
   }
+  itemInputs.quantityType.forEach((option) => {
+    if (e.target.id === option.id) {
+      setSesstionStorage('unit', e.target.id);
+      setSesstionStorage(e.target.id, e.target.id);
+    }
+  });
   console.log(e.target.value);
   console.log(typeof e.target);
 }
@@ -65,6 +60,10 @@ function handleSelectChange(e) {
 }
 // createListItem(product, quantity, units, category);
 function appendToList() {
-  displayForItems.appendChild(createListItem('a', 'b', 'szt', 'warzywa'));
+  const product = sessionStorageValue('textInput');
+  const quantity = sessionStorageValue('quantityInput');
+  const unit = sessionStorageValue('unit');
+
+  displayForItems.appendChild(createListItem(product, quantity, unit, 'warzywa'));
 }
 submitButton.addEventListener('click', appendToList);
