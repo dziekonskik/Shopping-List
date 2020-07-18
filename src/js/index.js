@@ -11,10 +11,6 @@ const inputList = document.querySelectorAll('.app__inputs-input');
 const categories = document.querySelector('.app__select');
 const categoryList = Array.from(document.querySelectorAll('.app__select__option'));
 
-inputList.forEach((input) => input.addEventListener('change', handleInputChange));
-
-categories.addEventListener('change', handleSelectChange);
-
 function setSesstionStorage(key, value) {
   sessionStorage.removeItem(key);
   sessionStorage.setItem(key, value);
@@ -22,6 +18,14 @@ function setSesstionStorage(key, value) {
 
 function sessionStorageValue(key) {
   return sessionStorage.getItem(key);
+}
+
+function setLocalStorage(key, value) {
+  localStorage.setItem(key, value);
+}
+
+function getFromStorage(storage, key) {
+  return storage.getItem(key);
 }
 
 function handleInputChange(e) {
@@ -43,27 +47,41 @@ function handleInputChange(e) {
       setSesstionStorage(e.target.id, e.target.id);
     }
   });
-  console.log(e.target.value);
-  console.log(typeof e.target);
 }
 
 function getSelectedCategory(category) {
   const selectedCategory = categoryList.find((option) => {
     return option.innerText === category ? option : null;
   });
-  console.log(selectedCategory.innerHTML);
   return selectedCategory.innerText;
 }
 
 function handleSelectChange(e) {
-  getSelectedCategory(e.target.value);
+  setSesstionStorage('category', getSelectedCategory(e.target.value));
 }
-// createListItem(product, quantity, units, category);
+
 function appendToList() {
   const product = sessionStorageValue('textInput');
   const quantity = sessionStorageValue('quantityInput');
   const unit = sessionStorageValue('unit');
+  const category = sessionStorageValue('category') || 'warzywa';
+  const details = [product, quantity, unit, category];
+  console.log(localStorage);
 
-  displayForItems.appendChild(createListItem(product, quantity, unit, 'warzywa'));
+  setLocalStorage('s7', JSON.stringify(details));
+  const a = getFromStorage(localStorage, 's7');
+  console.log(JSON.parse(a));
+  displayForItems.appendChild(createListItem(...JSON.parse(a)));
+  sessionStorage.clear();
 }
+
 submitButton.addEventListener('click', appendToList);
+categories.addEventListener('change', handleSelectChange);
+inputList.forEach((input) => input.addEventListener('change', handleInputChange));
+
+// TODO:
+// - napisac funkcje która appenduje itemy z localstorage do widoku i
+// chyba zmienić nazwe albo przenieść większą część logiki do jakiejś prepreData np
+// - statystyki porobić sztuk oraz wagi i kategorii (liczniki )
+// - przypisać kolory do selectow
+// -
