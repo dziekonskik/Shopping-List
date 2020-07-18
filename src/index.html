@@ -26,14 +26,20 @@
       <h1 class="app__heading">Shopping List</h1>
       <div class="app__display">
         <div class="app__item">
-          <span type="text" class="app__item__description">ogórki</span>
-          <span type="number" class="app__item__count">4</span>
-          <button class="app__item__button app__item__button--delete">
-            <img class="app__item__icon" src="img/trash-outline.svg" alt="trash icon" />
-          </button>
-          <button class="app__item__button app__item__button--edit">
-            <img class="app__item__icon" src="img/create-outline.svg" alt="edit icon" />
-          </button>
+          <span class="app__item__description">ogórki</span>
+          <div class="app__item__quantity-wrapper">
+            <span class="app__item__count">4</span>
+            <span class="app__item__unit">szt</span>
+          </div>
+          <span class="app__item__category">warzywa</span>
+          <div class="app__item__button-wrapper">
+            <button class="app__item__button app__item__button--delete">
+              <img class="app__item__icon" src="img/trash-outline.svg" alt="trash icon" />
+            </button>
+            <button class="app__item__button app__item__button--edit">
+              <img class="app__item__icon" src="img/create-outline.svg" alt="edit icon" />
+            </button>
+          </div>
         </div>
       </div>
       <form class="app__inputs">
@@ -72,19 +78,28 @@
           <option class="app__select__option app__select-option--pieczywo" value="pieczywo"
             >pieczywo</option
           >
-          <option
-            class="app__select__option app__select-option--art higieniczne"
-            value="art-higieniczne"
+          <option class="app__select__option app__select-option--chemia" value="art-higieniczne"
             >art higieniczne</option
           >
           <option class="app__select__option app__select-option--woda" value="woda">woda</option>
-          <option class="app__select__option app__select-option--inne napoje" value="inne-napoje"
+          <option class="app__select__option app__select-option--napoje" value="inne-napoje"
             >inne napoje</option
           >
         </select>
         <button class="app__add-button" type="button">Add</button>
       </form>
     </main>
+    <aside class="stats">
+      <ul class="stats__categories">
+        <li class="stats__category">warzywa</li>
+        <li class="stats__category">owoce</li>
+        <li class="stats__category">nabiał</li>
+        <li class="stats__category">pieczywo</li>
+        <li class="stats__category">chemia</li>
+        <li class="stats__category">woda</li>
+        <li class="stats__category">napoje</li>
+      </ul>
+    </aside>
     <!-- End your project here-->
   </body>
   <!-- Main js file -->
