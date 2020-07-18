@@ -26,17 +26,17 @@
       <h1 class="app__heading">Shopping List</h1>
       <div class="app__display">
         <div class="app__item">
-          <span class="app__item__description">ogórki</span>
-          <span class="app__item__count">4</span>
+          <span type="text" class="app__item__description">ogórki</span>
+          <span type="number" class="app__item__count">4</span>
           <button class="app__item__button app__item__button--delete">
-            <img class="app__item__icon" src="img/menu.svg" alt="" />del
+            <img class="app__item__icon" src="img/trash-outline.svg" alt="trash icon" />
           </button>
           <button class="app__item__button app__item__button--edit">
-            <img class="app__item__icon" src="img/delete.svg" alt="" />edit
+            <img class="app__item__icon" src="img/create-outline.svg" alt="edit icon" />
           </button>
         </div>
       </div>
-      <div class="app__inputs">
+      <form class="app__inputs">
         <input class="app__inputs-input app__inputs-input--text" type="text" />
         <input class="app__inputs-input app__inputs-input--number" type="number" />
 
@@ -46,49 +46,49 @@
           name="units"
           id="pieces"
         />
-        <label for="pieces">szt</label>
+        <label class="app__inputs-label" for="pieces">szt</label>
         <input
           class="app__inputs-input app__inputs-input--radio"
           type="radio"
           name="units"
           id="g"
         />
-        <label for="g">g</label>
+        <label class="app__inputs-label" for="g">g</label>
         <input
           class="app__inputs-input app__inputs-input--radio"
           type="radio"
           name="units"
           id="kg"
         />
-        <label for="kg">kg</label>
+        <label class="app__inputs-label" for="kg">kg</label>
         <select class="app__select" name="" id="">
-          <option class="app__select-option app__select-option--warzywa" value="warzywa"
+          <option class="app__select__option app__select-option--warzywa" value="warzywa"
             >warzywa</option
           >
-          <option class="app__select-option app__select-option--owoce" value="owoce">owoce</option>
-          <option class="app__select-option app__select-option--nabiał" value="nabiał"
+          <option class="app__select__option app__select-option--owoce" value="owoce">owoce</option>
+          <option class="app__select__option app__select-option--nabiał" value="nabiał"
             >nabiał</option
           >
-          <option class="app__select-option app__select-option--pieczywo" value="pieczywo"
+          <option class="app__select__option app__select-option--pieczywo" value="pieczywo"
             >pieczywo</option
           >
           <option
-            class="app__select-option app__select-option--art higieniczne"
+            class="app__select__option app__select-option--art higieniczne"
             value="art-higieniczne"
             >art higieniczne</option
           >
-          <option class="app__select-option app__select-option--woda" value="woda">woda</option>
-          <option class="app__select-option app__select-option--inne napoje" value="inne-napoje"
+          <option class="app__select__option app__select-option--woda" value="woda">woda</option>
+          <option class="app__select__option app__select-option--inne napoje" value="inne-napoje"
             >inne napoje</option
           >
         </select>
         <button class="app__add-button" type="button">Add</button>
-      </div>
+      </form>
     </main>
     <!-- End your project here-->
   </body>
   <!-- Main js file -->
   <script type="text/javascript" src="js/index.min.js"></script>
   <!-- Custom scripts -->
-  <script type="text/javascript"></script>
+  <script type="text/javascript" src="js/listItem.min.js"></script>
 </html>
