@@ -4,9 +4,9 @@ import createListItem from './listItem';
 export default {
   mdb,
 };
-
 const displayForItems = document.querySelector('.app__display');
-const submitButton = document.querySelector('.app__add-button');
+const submitButton = document.querySelector('.app__menu-button--add');
+const clearButton = document.querySelector('.app__menu-button--clear');
 const inputList = document.querySelectorAll('.app__inputs-input');
 const categories = document.querySelector('.app__select');
 const categoryList = Array.from(document.querySelectorAll('.app__select__option'));
@@ -21,30 +21,38 @@ function sessionStorageValue(key) {
 }
 
 function setLocalStorage(key, value) {
-  localStorage.setItem(key, value);
+  localStorage.setItem(key, JSON.stringify(value));
 }
 
 function getFromStorage(storage, key) {
-  return storage.getItem(key);
+  const storageData = storage.getItem(key);
+  return JSON.parse(storageData);
 }
 
-function handleInputChange(e) {
-  const itemInputs = {
+function clearInputs() {
+  const decription = document.querySelector('.app__inputs-input--text');
+  const quantity = document.querySelector('.app__inputs-input--number');
+  decription.value = '';
+  quantity.value = '';
+}
+
+function handleInputChange({ target }) {
+  const appInputs = {
     decription: document.querySelector('.app__inputs-input--text'),
     quantity: document.querySelector('.app__inputs-input--number'),
     quantityType: document.querySelectorAll('[type="radio"]'),
   };
-  if (e.target === itemInputs.decription && e.target.value !== '') {
-    setSesstionStorage('textInput', e.target.value);
+  if (target === appInputs.decription && target.value !== '') {
+    setSesstionStorage('textInput', target.value);
   }
-  if (e.target === itemInputs.quantity) {
-    if (e.target.value < 0) e.target.value = 0;
-    setSesstionStorage('quantityInput', e.target.value);
+  if (target === appInputs.quantity) {
+    if (target.value < 0) target.value = 0;
+    setSesstionStorage('quantityInput', target.value);
   }
-  itemInputs.quantityType.forEach((option) => {
-    if (e.target.id === option.id) {
-      setSesstionStorage('unit', e.target.id);
-      setSesstionStorage(e.target.id, e.target.id);
+  appInputs.quantityType.forEach((option) => {
+    if (target.id === option.id) {
+      setSesstionStorage('unit', target.id);
+      setSesstionStorage(target.id, target.id);
     }
   });
 }
@@ -60,28 +68,51 @@ function handleSelectChange(e) {
   setSesstionStorage('category', getSelectedCategory(e.target.value));
 }
 
-function appendToList() {
+function fromSessionToLocal() {
   const product = sessionStorageValue('textInput');
   const quantity = sessionStorageValue('quantityInput');
   const unit = sessionStorageValue('unit');
   const category = sessionStorageValue('category') || 'warzywa';
-  const details = [product, quantity, unit, category];
-  console.log(localStorage);
+  return [product, quantity, unit, category];
+}
 
-  setLocalStorage('s7', JSON.stringify(details));
-  const a = getFromStorage(localStorage, 's7');
-  console.log(JSON.parse(a));
-  displayForItems.appendChild(createListItem(...JSON.parse(a)));
+function renderList() {
+  const keyRegex = /^\d{6}$/g;
+  displayForItems.innerHTML = '';
+
+  Array.from(Object.keys(localStorage))
+    .sort((a, b) => {
+      return a - b;
+    })
+    .forEach((key) => {
+      if (key.match(keyRegex)) {
+        const inputData = getFromStorage(localStorage, key);
+        displayForItems.appendChild(createListItem(...inputData));
+      }
+    });
+}
+
+function appendToList() {
+  const key = new Date().getTime().toString().substr(-6);
+  setLocalStorage(key, fromSessionToLocal());
+  renderList();
+  clearInputs();
   sessionStorage.clear();
+}
+
+function clearList() {
+  localStorage.clear();
+  displayForItems.innerHTML = '';
 }
 
 submitButton.addEventListener('click', appendToList);
 categories.addEventListener('change', handleSelectChange);
 inputList.forEach((input) => input.addEventListener('change', handleInputChange));
+clearButton.addEventListener('click', clearList);
+renderList();
 
 // TODO:
-// - napisac funkcje która appenduje itemy z localstorage do widoku i
-// chyba zmienić nazwe albo przenieść większą część logiki do jakiejś prepreData np
-// - statystyki porobić sztuk oraz wagi i kategorii (liczniki )
+// - statystyki porobić sztuk oraz wagi i kategorii (liczniki total. per kategoria, total g/kg )
 // - przypisać kolory do selectow
-// -
+// - edytowanie nazwy, ilosci i opcja przypisania produktu do innej kategorii
+// - pwa, dragNdrop, export do pdf
