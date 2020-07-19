@@ -20,8 +20,8 @@ function createListItem(product, quantity, units, category) {
   spanCategory.classList.add('app__item__category');
   buttonDelete.className = 'app__item__button app__item__button--delete';
   buttonEdit.className = 'app__item__button app__item__button--edit';
-  iconDelele.classList.add('app__item__icon');
-  iconEdit.classList.add('app__item__icon');
+  iconDelele.className = 'app__item__icon app__item__icon--delete';
+  iconEdit.className = 'app__item__icon app__item__icon--edit';
 
   iconDelele.setAttribute('src', 'img/trash-outline.svg');
   iconDelele.setAttribute('alt', 'trash icon');

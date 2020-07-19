@@ -21,6 +21,7 @@ body {
   border: 1px solid black;
   border-radius: 10px;
   max-width: 400px;
+  padding: 30px;
 }
 
 .app {
@@ -29,7 +30,7 @@ body {
 
   &__heading {
     height: 5vh;
-    font-size: 24px;
+    font-size: 30px;
     margin: auto auto;
   }
 
@@ -55,20 +56,17 @@ body {
     font-size: 20px;
 
     &__description {
-      background-color: beige;
       border-radius: 3px;
       width: 40%;
       text-align: center;
     }
 
     &__count {
-      background-color: bisque;
       border-radius: 10px;
       text-align: center;
     }
 
     &__unit {
-      background-color: blanchedalmond;
       border-radius: 10px;
       text-align: center;
     }
@@ -80,7 +78,6 @@ body {
     }
 
     &__category {
-      background-color: burlywood;
       border-radius: 10px;
       text-align: center;
     }
@@ -131,18 +128,10 @@ body {
   &__select {
     border-radius: 3px;
     padding: 3px;
-
-    &-option {
-      &--woda {
-        display: block;
-        background-color: deepskyblue;
-        border: deepskyblue;
-      }
-    }
   }
 
   &__menu-button {
-    width: 60px;
+    width: 70px;
     background-color: transparent;
     border: 1px solid black;
     border-radius: 3px;

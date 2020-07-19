@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Shopping List</title>
+    <title>Lista Zakupów</title>
     <!-- Favicon -->
     <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
     <!-- Font Awesome -->
@@ -23,7 +23,7 @@
   <body>
     <!-- Start your project here-->
     <main class="app">
-      <h1 class="app__heading">Shopping List</h1>
+      <h1 class="app__heading">Lista Zakupów</h1>
       <div class="app__display">      
         </div>
       </div>
@@ -35,9 +35,9 @@
           class="app__inputs-input app__inputs-input--radio"
           type="radio"
           name="units"
-          id="pieces"
+          id="pc"
         />
-        <label class="app__inputs-label" for="pieces">szt</label>
+        <label class="app__inputs-label" for="pc">pc</label>
         <input
           class="app__inputs-input app__inputs-input--radio"
           type="radio"
@@ -49,9 +49,9 @@
           class="app__inputs-input app__inputs-input--radio"
           type="radio"
           name="units"
-          id="kg"
+          id="l"
         />
-        <label class="app__inputs-label" for="kg">kg</label>
+        <label class="app__inputs-label" for="l">l</label>
         <select class="app__select" name="" id="">
           <option class="app__select__option app__select-option--warzywa" value="warzywa"
             >warzywa</option
@@ -71,21 +71,24 @@
             >napoje</option
           >
         </select>
-        <button class="app__menu-button app__menu-button--add" type="button">Add</button>
-        <button class="app__menu-button app__menu-button--clear" type="button">Clear</button>
+        <button class="app__menu-button app__menu-button--add" type="submit">Dodaj</button>
+        <button class="app__menu-button app__menu-button--clear" type="button">Wyczyść</button>
       </form>
     </main>
     <aside class="stats">
       <ul class="stats__categories">
-        <li class="stats__category">warzywa</li>
-        <li class="stats__category">owoce</li>
-        <li class="stats__category">nabiał</li>
-        <li class="stats__category">pieczywo</li>
-        <li class="stats__category">chemia</li>
-        <li class="stats__category">woda</li>
-        <li class="stats__category">napoje</li>
+        <li class="stats__category" id="warzywa">Warzywa: <span class="warzywa--js"></span></li>
+        <li class="stats__category" id="owoce">Owoce: <span class="owoce--js"></span></li>
+        <li class="stats__category" id="nabial">Nabiał: <span class="nabial--js"></span></li>
+        <li class="stats__category" id="pieczywo">Pieczywo: <span class="pieczywo--js"></span></li>
+        <li class="stats__category" id="chemia">Chemia: <span class="chemia--js"></span></li>
+        <li class="stats__category" id="woda">Woda: <span class="woda--js"></span></li>
+        <li class="stats__category" id="napoje">Napoje: <span class="napoje--js"></span></li>
       </ul>
-      <div class="total-items"></div>
+      <div class="stats__total stats__total--total">Total wpisy: <span class="js--items"></span></div>
+      <div class="stats__total stats__total--pieces" id="pc">Total sztuki: <span class="js--pieces"></span></div>
+      <div class="stats__total stats__total--weight" id="g">Total gramy: <span class="js--grams"></span></div>
+      <div class="stats__total stats__total--liters" id="l">Total litry: <span class="js--liters"></span></div>
     </aside>
     <!-- End your project here-->
   </body>
@@ -93,4 +96,5 @@
   <script type="text/javascript" src="js/index.min.js"></script>
   <!-- Custom scripts -->
   <script type="text/javascript" src="js/listItem.min.js"></script>
+  <script type="text/javascript" src="js/stats.min.js"></script>
 </html>

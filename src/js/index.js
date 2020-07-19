@@ -11,6 +11,11 @@ const inputList = document.querySelectorAll('.app__inputs-input');
 const categories = document.querySelector('.app__select');
 const categoryList = Array.from(document.querySelectorAll('.app__select__option'));
 
+function clearList() {
+  localStorage.clear();
+  displayForItems.innerHTML = '';
+}
+
 function setSesstionStorage(key, value) {
   sessionStorage.removeItem(key);
   sessionStorage.setItem(key, value);
@@ -37,6 +42,7 @@ function clearInputs() {
 }
 
 function handleInputChange({ target }) {
+  if (target === '') throw new Error('please fill out fields');
   const appInputs = {
     decription: document.querySelector('.app__inputs-input--text'),
     quantity: document.querySelector('.app__inputs-input--number'),
@@ -76,6 +82,14 @@ function fromSessionToLocal() {
   return [product, quantity, unit, category];
 }
 
+function appendToList() {
+  const key = new Date().getTime().toString().substr(-6);
+  setLocalStorage(key, fromSessionToLocal());
+  renderList();
+  clearInputs();
+  sessionStorage.clear();
+}
+
 function renderList() {
   const keyRegex = /^\d{6}$/g;
   displayForItems.innerHTML = '';
@@ -87,22 +101,11 @@ function renderList() {
     .forEach((key) => {
       if (key.match(keyRegex)) {
         const inputData = getFromStorage(localStorage, key);
-        displayForItems.appendChild(createListItem(...inputData));
+        const newItem = createListItem(...inputData);
+        newItem.dataset.id = key;
+        displayForItems.appendChild(newItem);
       }
     });
-}
-
-function appendToList() {
-  const key = new Date().getTime().toString().substr(-6);
-  setLocalStorage(key, fromSessionToLocal());
-  renderList();
-  clearInputs();
-  sessionStorage.clear();
-}
-
-function clearList() {
-  localStorage.clear();
-  displayForItems.innerHTML = '';
 }
 
 submitButton.addEventListener('click', appendToList);
@@ -110,9 +113,3 @@ categories.addEventListener('change', handleSelectChange);
 inputList.forEach((input) => input.addEventListener('change', handleInputChange));
 clearButton.addEventListener('click', clearList);
 renderList();
-
-// TODO:
-// - statystyki porobić sztuk oraz wagi i kategorii (liczniki total. per kategoria, total g/kg )
-// - przypisać kolory do selectow
-// - edytowanie nazwy, ilosci i opcja przypisania produktu do innej kategorii
-// - pwa, dragNdrop, export do pdf
