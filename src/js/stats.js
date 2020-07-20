@@ -37,13 +37,13 @@ function filerTotalUnits(units) {
 function filterCategories() {
   const arrayCombined = parsedData.flat(Infinity);
   const categories = {
-    warzywa: 0, //green
-    owoce: 0, //red
-    nabial: 0, //white
-    pieczywo: 0, // brown
-    chemia: 0, // paleblue
-    woda: 0, //blue
-    napoje: 0, //orangered
+    warzywa: 0,
+    owoce: 0,
+    nabial: 0,
+    pieczywo: 0,
+    chemia: 0,
+    woda: 0,
+    napoje: 0,
   };
 
   arrayCombined.forEach((entry) => {
