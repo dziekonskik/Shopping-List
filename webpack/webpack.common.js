@@ -16,7 +16,7 @@ module.exports = {
   },
   plugins: [
     new CopyWebpackPlugin([
-      { from: Path.resolve(__dirname, '../src/index.html') },
+      { from: Path.resolve(__dirname, '../index.html') },
       { from: Path.resolve(__dirname, '../src/img'), to: 'img' },
     ]),
     new FixStyleOnlyEntriesPlugin(),
