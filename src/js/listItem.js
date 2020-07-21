@@ -1,4 +1,4 @@
-function createListItem(product, quantity, units, category) {
+export default function createListItem(product, quantity, units, category) {
   const listItem = document.createElement('div');
   const quantityWrapper = document.createElement('div');
   const buttonWrapper = document.createElement('div');
@@ -51,5 +51,3 @@ function createListItem(product, quantity, units, category) {
 
   return listItem;
 }
-
-export default createListItem;

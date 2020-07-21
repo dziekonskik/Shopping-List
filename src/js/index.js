@@ -1,15 +1,18 @@
-import * as mdb from 'mdb-ui-kit';
+// import * as mdb from 'mdb-ui-kit';
 import createListItem from './listItem';
+import displayStats from './stats';
 
-export default {
-  mdb,
-};
+// export default {
+//   mdb,
+// };
 const displayForItems = document.querySelector('.app__display');
 const submitButton = document.querySelector('.app__menu-button--add');
 const clearButton = document.querySelector('.app__menu-button--clear');
 const inputList = document.querySelectorAll('.app__inputs-input');
 const categories = document.querySelector('.app__select');
 const categoryList = Array.from(document.querySelectorAll('.app__select__option'));
+
+displayStats();
 
 function clearList() {
   localStorage.clear();
@@ -86,6 +89,7 @@ function appendToList() {
   const key = new Date().getTime().toString().substr(-6);
   setLocalStorage(key, fromSessionToLocal());
   renderList();
+  displayStats();
   clearInputs();
   sessionStorage.clear();
 }
