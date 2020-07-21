@@ -5,8 +5,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: {
-    'js/listItem': Path.resolve(__dirname, '../src/js/listItem.js'),
     'js/index': Path.resolve(__dirname, '../src/js/index.js'),
+    'js/listItem': Path.resolve(__dirname, '../src/js/listItem.js'),
     'js/stats': Path.resolve(__dirname, '../src/js/stats.js'),
     'css/index': Path.resolve(__dirname, '../src/scss/index.scss'),
   },
@@ -16,7 +16,7 @@ module.exports = {
   },
   plugins: [
     new CopyWebpackPlugin([
-      { from: Path.resolve(__dirname, '../index.html') },
+      { from: Path.resolve(__dirname, '../src/index.html') },
       { from: Path.resolve(__dirname, '../src/img'), to: 'img' },
     ]),
     new FixStyleOnlyEntriesPlugin(),
